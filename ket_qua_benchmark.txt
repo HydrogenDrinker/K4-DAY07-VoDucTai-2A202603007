@@ -1,0 +1,100 @@
+======================================================================
+LAB 07 BENCHMARK — STRATEGY: SentenceChunker(max_sentences_per_chunk=3)
+Student: Vo Duc Tai — MSSV: 2A202603007
+Dataset Directory: D:\Code\VinAI\Labs\Chieu\K4-DAY07-VoDucTai-2A202603007\data\ecommerce
+======================================================================
+
+[1] Nạp và phân đoạn (Chunking) tài liệu:
+  - File: buyer-refund-timeline-methods.md       | Chunks:  4 | Audience: buyer
+  - File: buyer-return-conditions.md             | Chunks:  6 | Audience: buyer
+  - File: buyer-return-refund-period.md          | Chunks:  3 | Audience: buyer
+  - File: non-returnable-categories.md           | Chunks:  5 | Audience: buyer
+  - File: seller-return-dispute-compensation.md  | Chunks:  5 | Audience: seller
+  - File: seller-return-response-sla.md          | Chunks:  4 | Audience: seller
+
+=> Đã nạp thành công 27 chunks từ 6 tài liệu (8202 ký tự) vào store.
+
+======================================================================
+[2] ĐÁNH GIÁ 5 BENCHMARK QUERIES:
+======================================================================
+
+--- Câu hỏi #1: Thời hạn tối đa để phản hồi và xử lý khiếu nại đổi trả là bao lâu?
+    Bộ lọc metadata: {'audience': 'buyer'}
+    Tài liệu chứa đáp án chuẩn (Gold Doc): buyer-return-refund-period
+    Câu trả lời chuẩn (Gold Answer): Tối đa 30 ngày đối với Tiki Trading và 07 ngày đối với Nhà Bán Hàng đối tác (TikiNGON trong 02h-24h).
+    Top-3 chunks truy xuất được:
+      1. [Score: 0.1336] Doc: buyer-refund-timeline-methods#2
+         Nội dung: - **Thẻ thanh toán quốc tế (Visa, MasterCard, JCB):** Tiền hoàn từ **07 đến 15 ngày làm việc** tùy theo quy trình đối so...
+      2. [Score: 0.0986] Doc: non-returnable-categories#1
+         Nội dung: 2. **Thực phẩm, đồ uống và hàng mau hỏng:** Thực phẩm khô, thực phẩm chức năng, sữa, đồ đóng hộp đã mở seal nắp bảo vệ, ...
+      3. [Score: 0.0949] Doc: non-returnable-categories#3
+         Nội dung: 5. **Hàng thanh lý xả kho:** Các sản phẩm trong chương trình thanh lý đặc biệt có ghi chú rõ ràng "Không hỗ trợ đổi trả"...
+
+--- Câu hỏi #2: Khách hàng cần đáp ứng những điều kiện gì về tình trạng sản phẩm để được chấp nhận đổi trả tại Tiki?
+    Bộ lọc metadata: None
+    Tài liệu chứa đáp án chuẩn (Gold Doc): buyer-return-conditions
+    Câu trả lời chuẩn (Gold Answer): Sản phẩm còn nguyên tem bảo hành, nguyên mã vạch, chưa qua sử dụng, chưa kích hoạt bảo hành điện tử, đầy đủ hộp đựng và phụ kiện, kèm video mở hộp.
+    Top-3 chunks truy xuất được:
+      1. [Score: 0.2759] Doc: seller-return-response-sla#3
+         Nội dung: Quy trình và thời hạn kiểm tra kiện hàng hoàn - Sau khi đơn vị vận chuyển giao trả kiện hàng về kho của Nhà Bán Hàng, đố...
+      2. [Score: 0.2655] Doc: buyer-return-conditions#2 [GOLD]
+         Nội dung: Giao sai sản phẩm (sai phân loại, màu sắc, kích thước, cấu hình) hoặc thiếu phụ kiện so với cam kết. 4. Sản phẩm đã hết ...
+      3. [Score: 0.2097] Doc: seller-return-response-sla#2
+         Nội dung: Từ chối yêu cầu và cung cấp bằng chứng chuyển lên bộ phận Chăm sóc Đối tác Tiki để làm trọng tài xử lý. - **Cơ chế tự độ...
+
+--- Câu hỏi #3: Nếu thanh toán bằng thẻ tín dụng quốc tế Visa hoặc Mastercard thì thời gian hoàn tiền là bao nhiêu ngày làm việc?
+    Bộ lọc metadata: None
+    Tài liệu chứa đáp án chuẩn (Gold Doc): buyer-refund-timeline-methods
+    Câu trả lời chuẩn (Gold Answer): Từ 07 đến 15 ngày làm việc tùy theo quy trình đối soát và chu kỳ sao kê của ngân hàng phát hành thẻ.
+    Top-3 chunks truy xuất được:
+      1. [Score: 0.1695] Doc: non-returnable-categories#3
+         Nội dung: 5. **Hàng thanh lý xả kho:** Các sản phẩm trong chương trình thanh lý đặc biệt có ghi chú rõ ràng "Không hỗ trợ đổi trả"...
+      2. [Score: 0.1650] Doc: buyer-return-conditions#5
+         Nội dung: - Khách hàng cần cung cấp video quay rõ quá trình mở kiện hàng (đồng kiểm unbox) thể hiện rõ mã vận đơn và tình trạng lỗ...
+      3. [Score: 0.1029] Doc: seller-return-response-sla#2
+         Nội dung: Từ chối yêu cầu và cung cấp bằng chứng chuyển lên bộ phận Chăm sóc Đối tác Tiki để làm trọng tài xử lý. - **Cơ chế tự độ...
+
+--- Câu hỏi #4: Những mặt hàng nào thuộc danh mục không áp dụng chính sách đổi trả vì lý do đổi ý tại Tiki?
+    Bộ lọc metadata: None
+    Tài liệu chứa đáp án chuẩn (Gold Doc): non-returnable-categories
+    Câu trả lời chuẩn (Gold Answer): Thẻ cào/e-voucher kỹ thuật số, thực phẩm đã mở nắp/seal, đồ lót/đồ bơi, mỹ phẩm đã rách màng bọc nilon, hàng may đo in ấn cá nhân hóa, hàng thanh lý xả kho.
+    Top-3 chunks truy xuất được:
+      1. [Score: 0.2889] Doc: non-returnable-categories#0 [GOLD]
+         Nội dung: # Danh mục các sản phẩm không hỗ trợ đổi trả tại Tiki  ## 1. Các nhóm hàng hóa không áp dụng đổi trả Nhằm tuân thủ các q...
+      2. [Score: 0.2812] Doc: buyer-return-conditions#2
+         Nội dung: Giao sai sản phẩm (sai phân loại, màu sắc, kích thước, cấu hình) hoặc thiếu phụ kiện so với cam kết. 4. Sản phẩm đã hết ...
+      3. [Score: 0.2406] Doc: seller-return-response-sla#1
+         Nội dung: 2. Đề xuất hoàn tiền một phần giữ lại sản phẩm (thương lượng với khách hàng). 3....
+
+--- Câu hỏi #5: Nhà bán hàng cần gửi khiếu nại bồi thường trong vòng bao lâu nếu hàng trả về bị tráo đổi hoặc hư hỏng nặng?
+    Bộ lọc metadata: None
+    Tài liệu chứa đáp án chuẩn (Gold Doc): seller-return-dispute-compensation
+    Câu trả lời chuẩn (Gold Answer): Trong vòng 03 ngày làm việc kể từ thời điểm nhận hàng hoàn, kèm video đóng gói xuất kho và video mở kiện hàng hoàn trả.
+    Top-3 chunks truy xuất được:
+      1. [Score: 0.3017] Doc: non-returnable-categories#4
+         Nội dung: Trường hợp được hỗ trợ bồi hoàn Đối với các mặt hàng thuộc danh mục trên, khách hàng chỉ được Tiki xem xét hoàn tiền khi...
+      2. [Score: 0.2499] Doc: buyer-refund-timeline-methods#2
+         Nội dung: - **Thẻ thanh toán quốc tế (Visa, MasterCard, JCB):** Tiền hoàn từ **07 đến 15 ngày làm việc** tùy theo quy trình đối so...
+      3. [Score: 0.1553] Doc: non-returnable-categories#2
+         Nội dung: **Sản phẩm thời trang nhạy cảm và đồ dùng cá nhân:** Đồ lót, đồ bơi, tất/vớ, mỹ phẩm, đồ trang điểm, nước hoa và các sản...
+
+======================================================================
+[3] THỬ NGHIỆM A/B TRÊN CÂU HỎI #1: CÓ vs KHÔNG CÓ METADATA FILTER
+======================================================================
+Query: "Thời hạn tối đa để phản hồi và xử lý khiếu nại đổi trả là bao lâu?"
+
+A. CÓ METADATA FILTER (audience=buyer):
+   1. buyer-refund-timeline-methods#2 (audience: buyer) score=0.1336
+      - **Thẻ thanh toán quốc tế (Visa, MasterCard, JCB):** Tiền hoàn từ **07 đến 15 ngày làm vi...
+   2. non-returnable-categories#1 (audience: buyer) score=0.0986
+      2. **Thực phẩm, đồ uống và hàng mau hỏng:** Thực phẩm khô, thực phẩm chức năng, sữa, đồ đó...
+   3. non-returnable-categories#3 (audience: buyer) score=0.0949
+      5. **Hàng thanh lý xả kho:** Các sản phẩm trong chương trình thanh lý đặc biệt có ghi chú ...
+
+B. KHÔNG CÓ METADATA FILTER (Không lọc đối tượng):
+   1. seller-return-dispute-compensation#1 (audience: seller) score=0.1968
+      2. Hàng hóa bị hư hại nặng, vỡ nát, móp méo do lỗi từ đơn vị vận chuyển đối tác của Tiki t...
+   2. buyer-refund-timeline-methods#2 (audience: buyer) score=0.1336
+      - **Thẻ thanh toán quốc tế (Visa, MasterCard, JCB):** Tiền hoàn từ **07 đến 15 ngày làm vi...
+   3. seller-return-dispute-compensation#3 (audience: seller) score=0.1244
+      ## 2. Quy chuẩn chứng từ và bằng chứng khiếu nại Nhà Bán Hàng phải tạo phiếu khiếu nại bồi...
